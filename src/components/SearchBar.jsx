@@ -24,6 +24,12 @@ const SearchBar = (props) =>{
     const handleInput = (e) =>{
         props.setVal(e.target.value)
     }
+
+    const handleKeyDown = (e) =>{
+        if (e.key === "Enter") {
+            document.getElementById("search-btn").click();
+        }
+    }
     return(
         <InputBar>
             <InputText
@@ -31,6 +37,7 @@ const SearchBar = (props) =>{
                 required
                 value={props.val}
                 onChange={handleInput}
+                onKeyDown={handleKeyDown}
                 type="text"
             />
         </InputBar>

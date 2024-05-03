@@ -23,8 +23,8 @@ const StyledTracks = styled.div`
 `
 
 function App() {
-  const clientId = "efa5edf7528f4198a85d63506812d048"
-  const clientSecret = "60274c23d47c4cd6a668bd26068b3441" 
+  const CLIENT_ID = "9ac1b0aeb43f4d27a75b13e7b7f639a2";
+  const CLIENT_SECRET = "fd2224d42c0849adbe62fe0a7649b014";
 
   //Estados del componente
   const [artistAlbums, setArtistAlbums] = useState([]);
@@ -41,7 +41,7 @@ function App() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: 'grant_type=client_credentials&client_id=' + clientId + '&client_secret=' + clientSecret
+        body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
     };
 
     fetch("https://accounts.spotify.com/api/token", authParameters)
@@ -51,14 +51,14 @@ function App() {
             }
             return response.json();
         })
-        .then(data => setAccessToken(data.accessToken))
+        .then(data => setAccessToken(data.access_token))
         .catch(error => console.error('Authentication error:', error));
 
     fetch("https://accounts.spotify.com/api/token", authParameters)
         .then(response => response.json())
         .then(data => {
-            setAccessToken(data.access_token);
-            setLoading(false); // Indica que la carga ha finalizado
+          setAccessToken(data.access_token);
+          setLoading(false); // Indica que la carga ha finalizado
         })
         .catch(error => {
             console.error('Authentication error:', error);
