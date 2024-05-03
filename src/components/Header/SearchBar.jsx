@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-const InputBar = styled.div`
-    margin-top: 2rem;
-    display:flex;
-    flex-direction: column;
-    background-color: #ffcccc;
-    border-radius: 8px;
-    padding: 0.5rem;
-`
-
 const InputText = styled.input`
     padding: 0.5rem 3.5rem;
     text-align: center;
@@ -31,16 +22,15 @@ const SearchBar = (props) =>{
         }
     }
     return(
-        <InputBar>
-            <InputText
-                placeholder="¡Busca a tu artista favorito!"
-                required
-                value={props.val}
-                onChange={handleInput}
-                onKeyDown={handleKeyDown}
-                type="text"
-            />
-        </InputBar>
+        <InputText
+            placeholder="¡Busca a tu artista favorito!"
+            required
+            value={props.val}
+            onChange={handleInput}
+            onKeyDown={handleKeyDown}
+            type="text"
+        />
+        
     )
 }
 
