@@ -44,6 +44,7 @@ const Header = (props) =>{
                     setVal={setArtistInput}                    
                 />
                 <ButtonHeader id="search-btn" onClick={()=>{
+                    setArtistInput("");
                     search(artistInput)
                     setTracks([])
                     }}>Buscar

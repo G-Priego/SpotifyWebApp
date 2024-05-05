@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const InputText = styled.input`
@@ -11,9 +12,8 @@ const InputText = styled.input`
 `
 
 const SearchBar = (props) =>{
-
     const handleInput = (e) =>{
-        props.setVal(e.target.value)
+        props.setVal(e.target.value);
     }
 
     const handleKeyDown = (e) =>{

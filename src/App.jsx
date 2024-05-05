@@ -2,11 +2,7 @@ import "./App.css";
 import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 import { useEffect, useState } from "react";
-import Album from "./components/MainPage/Album";
-import Track from "./components/AlbumTracks/Track";
-import styled from "styled-components";
 import ArtistAlbums from "./components/MainPage/ArtistAlbums";
-import AlbumTracks from "./components/AlbumTracks/AlbumTracks";
 
 function App() {
   const CLIENT_ID = "9ac1b0aeb43f4d27a75b13e7b7f639a2";
@@ -90,33 +86,12 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log(data);//quitar
         setArtistAlbums(data.items);
       });
   }
 
-  //Funcion para buscar las canciones de un album
-  async function searchAlbum(albumID) {
-    let albumParameters = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + accessToken,
-      },
-    };
-    //Obtener las canciones de albums
-    await fetch(
-      "https://api.spotify.com/v1/albums/" + albumID + "/tracks?limit=50",
-      albumParameters
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setTracks(data.items);
-      });
-  }
-
-  console.log(tracks);
+  console.log(tracks);//quitar
 
   return (
     <div className="App">
@@ -125,8 +100,8 @@ function App() {
         <div>
           <Header search={search} setTracks={setTracks} />
           <MainPage />
-          <ArtistAlbums artistAlbums = {artistAlbums} searchAlbum = {searchAlbum} artistName = {artistName}/>
-          <AlbumTracks tracks = {tracks}/>
+          <ArtistAlbums artistAlbums = {artistAlbums} artistName = {artistName} accessToken = {accessToken}>
+          </ArtistAlbums>          
         </div>
       )}
     </div>

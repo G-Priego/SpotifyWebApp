@@ -3,6 +3,10 @@ import styled from "styled-components";
 import Album from "./Album";
 import { useState } from "react";
 
+const ArtistInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 const AlbumsDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -10,31 +14,28 @@ const AlbumsDiv = styled.div`
 `;
 
 const ArtistAlbums = (props) =>{
-    const artistAlbums = props.artistAlbums;
-    const searchAlbum = props.searchAlbum;
-    const artistName = props.artistName;
-
+    const { artistAlbums, artistName, accessToken} = props;
     const [mensaje, setMensaje] = useState("");
+
     return(
-        <>
+        <ArtistInfo>
         <h2>{artistName}</h2>
+        <h3>{mensaje}</h3>
         <AlbumsDiv>
             {artistAlbums.map((album, index) =>{
             return(
                 <Album
                 title={album.name}
                 image={album.images[1].url}
-                searchAlbum={searchAlbum}
                 albumID={album.id}
+                accessToken = {accessToken}
                 setMensaje={setMensaje}
                 key={index}
                 />
             )
             })}
         </AlbumsDiv>
-        <h3>{mensaje}</h3>
-        </>
-        
+        </ArtistInfo>        
     )
 }
 
