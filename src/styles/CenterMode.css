@@ -1,0 +1,24 @@
+.slick-slide {
+  margin: 0px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: rgb(54, 54, 54);
+}
+
+.slider-container {
+  width: 75%;
+  margin: 3em 10em 0;
+  background-color: antiquewhite;
+}
+
+.albumCover-slider{
+    cursor: pointer;
+}
+
+.title-centered{
+    color: rgba(0, 0, 0, 0.464);
+    font-size: 2em;
+    font-weight: bold;
+}

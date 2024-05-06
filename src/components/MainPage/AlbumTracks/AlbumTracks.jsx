@@ -58,7 +58,7 @@ const AlbumTracks = ({ albumID, accessToken }) => {
         );
       })}
       <img
-        src="https://static.vecteezy.com/system/resources/previews/010/975/974/non_2x/media-player-video-player-png.png"
+        src="/media-player.png"
         alt="Reproductor"
         style={{ width: 300 }}
       />

@@ -1,26 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import Album from "./Album";
-import { useState } from "react";
 
 const ArtistInfo = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 1em;
 `;
 const AlbumsDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background-color: blue;
+
+`;
+
+const ArtistName = styled.h2`
+    font-size: 5em;
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    padding: 0;
+    margin:0;
 `;
 
 const ArtistAlbums = (props) =>{
     const { artistAlbums, artistName, accessToken} = props;
-    const [mensaje, setMensaje] = useState("");
 
     return(
         <ArtistInfo>
-        <h2>{artistName}</h2>
-        <h3>{mensaje}</h3>
+        <ArtistName>{artistName}</ArtistName>
+        <h3 style={{margin:0}}>¡Da click sobre la portada de un album para ver sus canciones!</h3>
         <AlbumsDiv>
             {artistAlbums.map((album, index) =>{
             return(
@@ -29,7 +37,6 @@ const ArtistAlbums = (props) =>{
                 image={album.images[1].url}
                 albumID={album.id}
                 accessToken = {accessToken}
-                setMensaje={setMensaje}
                 key={index}
                 />
             )

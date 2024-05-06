@@ -3,6 +3,8 @@ import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 import { useEffect, useState } from "react";
 import ArtistAlbums from "./components/MainPage/ArtistAlbums";
+import NewReleases from "./components/NewReleases";
+import CenterMode from "./components/NewReleases";
 
 function App() {
   const CLIENT_ID = "9ac1b0aeb43f4d27a75b13e7b7f639a2";
@@ -44,6 +46,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setAccessToken(data.access_token);
+        console.log(accessToken);
         setLoading(false); // Indica que la carga ha finalizado
       })
       .catch((error) => {
@@ -99,7 +102,8 @@ function App() {
       (
         <div>
           <Header search={search} setTracks={setTracks} />
-          <MainPage />
+          <MainPage/>
+          <NewReleases accessToken={accessToken}/>
           <ArtistAlbums artistAlbums = {artistAlbums} artistName = {artistName} accessToken = {accessToken}>
           </ArtistAlbums>          
         </div>
